@@ -1,4 +1,4 @@
-package br.com.pizzaria.fastPizzas.model;
+package br.com.pizzaria.fastPizzas.enums;
 
 public enum StatusPedido {
     FINALIZADO,

@@ -1,5 +1,6 @@
 package br.com.pizzaria.fastPizzas.model;
 
+import br.com.pizzaria.fastPizzas.enums.StatusPedido;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
