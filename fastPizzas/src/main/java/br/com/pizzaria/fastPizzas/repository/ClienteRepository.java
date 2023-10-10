@@ -1,6 +1,6 @@
 package br.com.pizzaria.fastPizzas.repository;
 
-import br.com.pizzaria.fastPizzas.model.Cliente;
+import br.com.pizzaria.fastPizzas.entity.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

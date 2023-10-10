@@ -1,4 +1,4 @@
-package br.com.pizzaria.fastPizzas.model;
+package br.com.pizzaria.fastPizzas.entity;
 
 
 import br.com.pizzaria.fastPizzas.enums.Cargos;
@@ -12,21 +12,24 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "funcionario")
+@Entity(name = "Funcionario")
+@Table(name = "tb_funcionario")
 public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID Id;
 
-    @Column(nullable = false)
+    @Column(nullable = false,
+            columnDefinition = "VARCHAR(255)")
     private String nome;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Cargos cargos;
 
-    @Column(nullable = false)
+    @Column(nullable = false,
+            columnDefinition = "DATE")
     private LocalDate dataAdmissao;
 
 }

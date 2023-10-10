@@ -1,4 +1,4 @@
-package br.com.pizzaria.fastPizzas.model;
+package br.com.pizzaria.fastPizzas.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
@@ -13,7 +13,8 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "cliente")
+@Entity(name = "Cliente")
+@Table(name = "tb_cliente")
 public class Cliente {
 
     @Id
@@ -27,12 +28,12 @@ public class Cliente {
     private String endereco;
 
     @Column(nullable = false)
-    private int CEP;
+    private Integer CEP;
 
     @Email
     @Column(nullable = false)
     private String email;
 
-    @NotNull
+    @NotNull(message = "O telefone não pode ser nulo")
     private String telefone;
 }
