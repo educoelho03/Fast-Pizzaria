@@ -49,20 +49,20 @@ public class FuncionarioService {
 //        funcionarios.stream().map(funcionario -> funcionario.setCargos(funcionario.getCargos()));
 //    }
 
-    public void deleteById(Long id){
+    public void deleteFuncionariosById(Long id){
         try{
             Funcionario funcionarioExiste = getFuncionarioById(id);
             funcionarioRepository.delete(funcionarioExiste);
         } catch (Exception e){
-            throw new RuntimeException(e);
+            throw new RuntimeException("Não foi possivel deletar o funcionario de ID: " + id);
         }
     }
 
-    public void deleteAll(){
+    public void deleteAllFuncionarios(){
         try {
             funcionarioRepository.deleteAll();
         } catch (Exception e){
-            throw new RuntimeException(e);
+            throw new RuntimeException("Não foi possivel deletar os funcionarios.");
         }
     }
 
