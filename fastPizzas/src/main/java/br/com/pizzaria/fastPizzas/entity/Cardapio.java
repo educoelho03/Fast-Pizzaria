@@ -15,15 +15,15 @@ public class Cardapio {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false,
             columnDefinition = "VARCHAR(255)")
-    private String pizzaSalgada;
+    private String saboresSalgados;
 
     @Column(nullable = false,
             columnDefinition = "VARCHAR(255)")
-    private String pizzaDoce;
+    private String saboresDoces;
 
     @Column(nullable = false,
             columnDefinition = "VARCHAR(255)")

@@ -18,7 +18,7 @@ public class Funcionario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID Id;
+    private Long Id;
 
     @Column(nullable = false,
             columnDefinition = "VARCHAR(255)")

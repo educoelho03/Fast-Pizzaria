@@ -18,7 +18,7 @@ public class Pedidos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+    private Long id;
 
     @Column(nullable = false,
             columnDefinition = "DATE")
