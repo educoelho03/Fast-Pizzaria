@@ -5,8 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -23,11 +22,7 @@ public class Pedidos {
 
     @Column(nullable = false,
             columnDefinition = "DATE")
-    private LocalDate dataDoPedido;
-
-    @Column(nullable = false,
-            columnDefinition = "DATE")
-    private LocalDate horaDoPedido;
+    private LocalDateTime dataDoPedido;
 
     @NotNull
     @Enumerated(EnumType.STRING)
