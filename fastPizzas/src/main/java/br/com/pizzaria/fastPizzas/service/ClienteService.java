@@ -3,6 +3,7 @@ package br.com.pizzaria.fastPizzas.service;
 import br.com.pizzaria.fastPizzas.entity.Cliente;
 import br.com.pizzaria.fastPizzas.exceptions.ClienteNotFoundException;
 import br.com.pizzaria.fastPizzas.repository.ClienteRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
+    @Transactional
     public void addCliente(Cliente cliente){
         clienteRepository.save(cliente);
     }
@@ -27,6 +29,7 @@ public class ClienteService {
                 .orElseThrow(() -> new ClienteNotFoundException("Cliente com ID " + id + " não encontrado."));
     }
 
+    @Transactional
     public Cliente updateCliente(Cliente cliente){
         if(cliente.getId() == null){
             throw new IllegalArgumentException("ID não encontrado");
@@ -43,14 +46,16 @@ public class ClienteService {
         return clienteRepository.saveAndFlush(clienteExiste);
     }
 
+    @Transactional
     public void deleteClientesById(Long id){
         try{
             clienteRepository.deleteById(id);
         } catch (Exception e){
-            throw new RuntimeException("Não foi possivel deletar o funcionario de ID: " + id);
+            throw new RuntimeException("Não foi possivel deletar o cliente de ID: " + id);
         }
     }
 
+    @Transactional
     public void deleteAllClientes(){
         try {
             clienteRepository.deleteAll();

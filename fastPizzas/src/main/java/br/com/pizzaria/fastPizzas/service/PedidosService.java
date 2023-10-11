@@ -16,11 +16,12 @@ public class PedidosService {
     @Autowired
     private PedidosRepository pedidosRepository;
 
-
+    @Transactional
     public void addPedido(Pedidos pedido) {
         pedidosRepository.save(pedido);
     }
 
+    @Transactional
     public void deletePedidoById(Long id) {
         pedidosRepository.deleteById(id);
     }
@@ -31,6 +32,7 @@ public class PedidosService {
         return pedido.getStatusPedido();
     }
 
+    @Transactional
     public void alterarStatusPedidoById(Pedidos pedidos) {
         try {
             Pedidos pedidoExiste = pedidosRepository.getReferenceById(pedidos.getId());
@@ -41,6 +43,7 @@ public class PedidosService {
         }
     }
 
+    @Transactional
     public void alterarInformacoesDoPedidoById(Pedidos pedidos) {
         Pedidos pedidoExiste = pedidosRepository.findById(pedidos.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
