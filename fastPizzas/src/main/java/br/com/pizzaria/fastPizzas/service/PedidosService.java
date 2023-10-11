@@ -43,9 +43,12 @@ public class PedidosService {
 
         // TODO: Corrigir.
         public void alterarInformacoesDoPedidoById(Pedidos pedidos){
-                Pedidos pedidoExiste = pedidosRepository.findById(pedidos.getId()).orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
-                pedidoExiste.setInformacoesPedido(pedidos.getInformacoesPedido());
-                pedidosRepository.saveAndFlush(pedidoExiste);
+            Pedidos pedidoExiste = pedidosRepository.findById(pedidos.getId())
+                    .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
+
+            pedidoExiste.setInformacoesPedido(pedidos.getInformacoesPedido());
+            pedidosRepository.saveAndFlush(pedidoExiste);
+        }
 
         }
 
