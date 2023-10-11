@@ -31,7 +31,7 @@ public class PedidosService {
         return pedido.getStatusPedido();
     }
 
-    public void alterarStatusPedidoById(Pedidos pedidos){
+    public void alterarStatusPedidoById(Pedidos pedidos) {
         try {
             Pedidos pedidoExiste = pedidosRepository.getReferenceById(pedidos.getId());
             pedidoExiste.setStatusPedido(pedidos.getStatusPedido());
@@ -39,18 +39,15 @@ public class PedidosService {
         } catch (EntityNotFoundException e) {
             throw new EntityNotFoundException("Não foi possível alterar o status do pedido. Pedido não encontrado.");
         }
-
-
-        // TODO: Corrigir.
-        public void alterarInformacoesDoPedidoById(Pedidos pedidos){
-            Pedidos pedidoExiste = pedidosRepository.findById(pedidos.getId())
-                    .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
-
-            pedidoExiste.setInformacoesPedido(pedidos.getInformacoesPedido());
-            pedidosRepository.saveAndFlush(pedidoExiste);
-        }
-
-        }
-
     }
+
+    public void alterarInformacoesDoPedidoById(Pedidos pedidos) {
+        Pedidos pedidoExiste = pedidosRepository.findById(pedidos.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
+
+        pedidoExiste.setInformacoesPedido(pedidos.getInformacoesPedido());
+        pedidosRepository.saveAndFlush(pedidoExiste);
+    }
+
+
 }
