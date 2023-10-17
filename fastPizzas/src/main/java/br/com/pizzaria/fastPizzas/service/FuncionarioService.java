@@ -16,7 +16,6 @@ public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;
 
 
-    @Transactional
     public Funcionario addFuncionario(Funcionario funcionario){
         return funcionarioRepository.save(funcionario);
     }
@@ -30,7 +29,6 @@ public class FuncionarioService {
                 .orElseThrow(() -> new FuncionarioNotFoundException("Funcionario não encontrado com ID: " + id));
     }
 
-    @Transactional
     public Funcionario updateFuncionario(Funcionario funcionarios){
         if(funcionarios.getId() == null){
             throw new IllegalArgumentException("O ID não pode ser nulo");
@@ -47,7 +45,6 @@ public class FuncionarioService {
 //        funcionarios.stream().map(funcionario -> funcionario.setCargos(funcionario.getCargos()));
 //    }
 
-    @Transactional
     public void deleteFuncionariosById(Long id){
         try{
             Funcionario funcionarioExiste = getFuncionarioById(id);
@@ -57,7 +54,6 @@ public class FuncionarioService {
         }
     }
 
-    @Transactional
     public void deleteAllFuncionarios(){
         try {
             funcionarioRepository.deleteAll();

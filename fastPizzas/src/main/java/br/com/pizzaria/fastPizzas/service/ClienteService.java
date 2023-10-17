@@ -15,7 +15,6 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienteRepository;
 
-    @Transactional
     public void addCliente(Cliente cliente){
         clienteRepository.save(cliente);
     }
@@ -29,7 +28,6 @@ public class ClienteService {
                 .orElseThrow(() -> new ClienteNotFoundException("Cliente com ID " + id + " não encontrado."));
     }
 
-    @Transactional
     public Cliente updateCliente(Cliente cliente){
         if(cliente.getId() == null){
             throw new IllegalArgumentException("ID não encontrado");
@@ -46,7 +44,6 @@ public class ClienteService {
         return clienteRepository.saveAndFlush(clienteExiste);
     }
 
-    @Transactional
     public void deleteClientesById(Long id){
         try{
             clienteRepository.deleteById(id);
@@ -55,7 +52,6 @@ public class ClienteService {
         }
     }
 
-    @Transactional
     public void deleteAllClientes(){
         try {
             clienteRepository.deleteAll();
