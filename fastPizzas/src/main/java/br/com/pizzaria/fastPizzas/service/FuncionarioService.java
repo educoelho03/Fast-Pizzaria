@@ -3,11 +3,9 @@ package br.com.pizzaria.fastPizzas.service;
 import br.com.pizzaria.fastPizzas.entity.Funcionario;
 import br.com.pizzaria.fastPizzas.exceptions.FuncionarioNotFoundException;
 import br.com.pizzaria.fastPizzas.repository.FuncionarioRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class FuncionarioService {
@@ -29,16 +27,16 @@ public class FuncionarioService {
                 .orElseThrow(() -> new FuncionarioNotFoundException("Funcionario não encontrado com ID: " + id));
     }
 
-    public Funcionario updateFuncionario(Funcionario funcionarios){
+    public void updateFuncionario(Long id, Funcionario funcionarios){
         if(funcionarios.getId() == null){
             throw new IllegalArgumentException("O ID não pode ser nulo");
         }
 
-        Funcionario funcionarioExiste = getFuncionarioById(funcionarios.getId());
+        Funcionario funcionarioExiste = getFuncionarioById(id);
         funcionarioExiste.setNome(funcionarios.getNome());
         funcionarioExiste.setCargos(funcionarios.getCargos());
 
-        return funcionarioRepository.saveAndFlush(funcionarioExiste);
+        funcionarioRepository.saveAndFlush(funcionarioExiste);
     }
 
 //    public void updateCargo(List<Funcionario> funcionarios){
