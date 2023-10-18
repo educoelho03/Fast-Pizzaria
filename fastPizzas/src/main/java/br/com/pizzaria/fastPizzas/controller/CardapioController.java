@@ -2,6 +2,7 @@ package br.com.pizzaria.fastPizzas.controller;
 
 import br.com.pizzaria.fastPizzas.entity.Cardapio;
 import br.com.pizzaria.fastPizzas.service.CardapioService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +23,9 @@ public class CardapioController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/adicionar")
-    public ResponseEntity<Cardapio> adicionarItem(Cardapio item){
+    @PostMapping("/cadastrar")
+    @Transactional
+    public ResponseEntity<Cardapio> cadastrarItem(Cardapio item){
         cardapioService.addItemCardapio(item);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -34,13 +36,14 @@ public class CardapioController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/alterar/{id}")
-    public ResponseEntity<Cardapio> alterarPrecoItemPorId(@PathVariable Long id, @RequestBody Cardapio item){
-        cardapioService.alterarPrecoItem(id, item);
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Cardapio> atualizarPrecoItemPorId(@PathVariable Long id, @RequestBody Cardapio item){
+        cardapioService.atualizarPrecoItem(id, item);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/deletar/{id}")
+    @Transactional
     public ResponseEntity<Void> deletarItemPorId(@PathVariable Long id){
         cardapioService.deletarItemById(id);
         return new ResponseEntity<>(HttpStatus.OK);

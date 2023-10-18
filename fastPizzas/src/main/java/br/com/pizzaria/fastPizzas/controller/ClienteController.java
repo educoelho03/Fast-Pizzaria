@@ -2,6 +2,7 @@ package br.com.pizzaria.fastPizzas.controller;
 
 import br.com.pizzaria.fastPizzas.entity.Cliente;
 import br.com.pizzaria.fastPizzas.service.ClienteService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -23,8 +24,9 @@ public class ClienteController {
     // TODO: Pesquisar sobre ResponseBody e RequestBody
     private ClienteService clienteService;
 
-    @PostMapping("/criar")
-    public ResponseEntity<Cliente> criarCliente(@RequestBody Cliente cliente){
+    @PostMapping("/cadastrar")
+    @Transactional
+    public ResponseEntity<Cliente> cadastrarCliente(@RequestBody Cliente cliente){
         clienteService.addCliente(cliente);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -42,18 +44,21 @@ public class ClienteController {
     }
 
     @PutMapping("/atualizar")
+    @Transactional
     public ResponseEntity<Cliente> atualizarDadosCliente(@PathVariable Long id, @RequestBody Cliente cliente){
         clienteService.updateCliente(id, cliente);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/deletar")
+    @Transactional
     public ResponseEntity<Void> deletarCliente(){
         clienteService.deleteAllClientes();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @DeleteMapping("/deletar/{id}")
+    @Transactional
     public ResponseEntity<Void> deletarClientePorId(@PathVariable Long id){
         clienteService.deleteClientesById(id);
         return new ResponseEntity<>(HttpStatus.OK);

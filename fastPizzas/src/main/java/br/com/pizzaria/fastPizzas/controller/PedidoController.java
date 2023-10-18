@@ -3,6 +3,7 @@ package br.com.pizzaria.fastPizzas.controller;
 import br.com.pizzaria.fastPizzas.entity.Pedido;
 import br.com.pizzaria.fastPizzas.enums.StatusPedido;
 import br.com.pizzaria.fastPizzas.service.PedidoService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,8 +16,9 @@ public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
-    @PostMapping("/criar")
-    public ResponseEntity<Pedido> criarPedido(@RequestBody Pedido pedido){
+    @PostMapping("/cadastrar")
+    @Transactional
+    public ResponseEntity<Pedido> cadastrarPedido(@RequestBody Pedido pedido){
         pedidoService.addPedido(pedido);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -34,12 +36,14 @@ public class PedidoController {
     }
 
     @PutMapping("/alterarStatus/{id}")
+    @Transactional
     public ResponseEntity<Pedido> alterarStatus(@PathVariable Long id, @RequestBody Pedido pedido){
         pedidoService.alterarStatusPedidoById(id, pedido);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/alterarInformacoes/{id}")
+    @Transactional
     public ResponseEntity<Pedido> alterarInformacoes(@PathVariable Long id, @RequestBody Pedido pedido){
         pedidoService.alterarInformacoesDoPedidoById(id, pedido);
         return new ResponseEntity<>(HttpStatus.OK);

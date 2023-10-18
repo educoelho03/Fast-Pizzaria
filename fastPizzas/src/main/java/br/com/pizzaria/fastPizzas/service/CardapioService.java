@@ -27,7 +27,7 @@ public class CardapioService {
         cardapioRepository.deleteById(id);
     }
 
-    public void alterarPrecoItem(Long id, Cardapio item){
+    public void atualizarPrecoItem(Long id, Cardapio item){
         Cardapio cardapioExiste = cardapioRepository.getReferenceById(id);
 
         cardapioExiste.setPreco(item.getPreco());
