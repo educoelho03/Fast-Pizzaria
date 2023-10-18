@@ -1,14 +1,11 @@
 package br.com.pizzaria.fastPizzas.service;
 
-import br.com.pizzaria.fastPizzas.entity.Cliente;
 import br.com.pizzaria.fastPizzas.entity.Pedido;
 import br.com.pizzaria.fastPizzas.enums.StatusPedido;
 import br.com.pizzaria.fastPizzas.repository.PedidoRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class PedidoService {
@@ -20,8 +17,8 @@ public class PedidoService {
         pedidoRepository.save(pedido);
     }
 
-    public List<Pedido> getAllPedidos(){
-        return pedidoRepository.findAll();
+    public void getAllPedidos(){
+        pedidoRepository.findAll();
     }
 
     public void deletePedidoById(Long id) {
