@@ -3,7 +3,6 @@ package br.com.pizzaria.fastPizzas.service;
 import br.com.pizzaria.fastPizzas.entity.Cliente;
 import br.com.pizzaria.fastPizzas.exceptions.ClienteNotFoundException;
 import br.com.pizzaria.fastPizzas.repository.ClienteRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,12 +27,12 @@ public class ClienteService {
                 .orElseThrow(() -> new ClienteNotFoundException("Cliente com ID " + id + " não encontrado."));
     }
 
-    public Cliente updateCliente(Cliente cliente){
+    public void updateCliente(Long id, Cliente cliente){
         if(cliente.getId() == null){
             throw new IllegalArgumentException("ID não encontrado");
         }
 
-        Cliente clienteExiste = clienteRepository.getReferenceById(cliente.getId());
+        Cliente clienteExiste = clienteRepository.getReferenceById(id);
 
         clienteExiste.setNome(cliente.getNome());
         clienteExiste.setEndereco(cliente.getEndereco());
@@ -41,7 +40,7 @@ public class ClienteService {
         clienteExiste.setEmail(cliente.getEmail());
         clienteExiste.setTelefone(cliente.getTelefone());
 
-        return clienteRepository.saveAndFlush(clienteExiste);
+        clienteRepository.saveAndFlush(clienteExiste);
     }
 
     public void deleteClientesById(Long id){

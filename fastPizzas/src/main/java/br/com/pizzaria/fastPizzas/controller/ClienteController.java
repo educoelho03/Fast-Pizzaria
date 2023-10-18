@@ -29,7 +29,7 @@ public class ClienteController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/listagem")
+    @GetMapping("/listar")
     public ResponseEntity<List<Cliente>> listagemClientes(){
         clienteService.getAllClientes();
         return new ResponseEntity<>(HttpStatus.OK);
@@ -42,8 +42,8 @@ public class ClienteController {
     }
 
     @PutMapping("/atualizar")
-    public ResponseEntity<Cliente> atualizarDadosCliente(@RequestBody Cliente cliente){
-        clienteService.updateCliente(cliente);
+    public ResponseEntity<Cliente> atualizarDadosCliente(@PathVariable Long id, @RequestBody Cliente cliente){
+        clienteService.updateCliente(id, cliente);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
