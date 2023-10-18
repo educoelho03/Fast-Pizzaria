@@ -5,7 +5,6 @@ import br.com.pizzaria.fastPizzas.repository.CardapioRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CardapioService {
@@ -16,6 +15,10 @@ public class CardapioService {
         return cardapioRepository.findAll();
     }
 
+    public void addItemCardapio(Cardapio item){
+        cardapioRepository.save(item);
+    }
+
     public Cardapio getCardapioById(Long id){
         return cardapioRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Item não encontrado: " + id));
     }
@@ -24,15 +27,11 @@ public class CardapioService {
         cardapioRepository.deleteById(id);
     }
 
-    public void addItemCardapio(Cardapio cardapio){
-        cardapioRepository.save(cardapio);
-    }
-
-    public Cardapio alterarPrecoItem(Cardapio cardapio, Long id){
+    public void alterarPrecoItem(Long id, Cardapio item){
         Cardapio cardapioExiste = cardapioRepository.getReferenceById(id);
 
-        cardapioExiste.setPreco(cardapio.getPreco());
+        cardapioExiste.setPreco(item.getPreco());
 
-        return cardapioRepository.saveAndFlush(cardapioExiste);
+        cardapioRepository.saveAndFlush(cardapioExiste);
     }
 }
