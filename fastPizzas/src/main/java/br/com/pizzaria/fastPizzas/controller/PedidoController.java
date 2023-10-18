@@ -43,4 +43,10 @@ public class PedidoController {
         pedidoService.alterarInformacoesDoPedidoById(id, pedido);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/deletarPedido/{id}")
+    public ResponseEntity<Void> deletarPedidoPorId(@PathVariable Long id){
+        pedidoService.deletePedidoById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
