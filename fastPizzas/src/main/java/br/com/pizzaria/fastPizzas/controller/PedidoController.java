@@ -28,8 +28,9 @@ public class PedidoController {
     }
 
     @GetMapping("/consultarStatus/{id}")
-    public StatusPedido consultarStatus(@PathVariable Long id){
-        return pedidoService.consultarStatusPedidoById(id);
+    public ResponseEntity<StatusPedido> consultarStatus(@PathVariable Long id){
+        pedidoService.consultarStatusPedidoById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PutMapping("/alterarStatus/{id}")
