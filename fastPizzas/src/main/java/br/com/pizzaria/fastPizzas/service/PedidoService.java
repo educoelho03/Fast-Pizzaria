@@ -24,6 +24,11 @@ public class PedidoService {
         pedidoRepository.findAll();
     }
 
+    public Pedido getPedidoById(Long id){
+        return pedidoRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Pedido nao encontrado. " + id));
+    }
+
     public void deletePedidoById(Long id) {
         pedidoRepository.deleteById(id);
     }
