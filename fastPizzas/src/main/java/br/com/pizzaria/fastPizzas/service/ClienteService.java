@@ -11,8 +11,11 @@ import java.util.List;
 @Service
 public class ClienteService {
 
-    @Autowired
-    private ClienteRepository clienteRepository;
+    private final ClienteRepository clienteRepository;
+
+    public ClienteService(ClienteRepository clienteRepository) {
+        this.clienteRepository = clienteRepository;
+    }
 
     public void addCliente(Cliente cliente){
         clienteRepository.save(cliente);

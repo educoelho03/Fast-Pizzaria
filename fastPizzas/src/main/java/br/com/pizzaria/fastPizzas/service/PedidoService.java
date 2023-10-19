@@ -10,8 +10,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class PedidoService {
 
-    @Autowired
-    private PedidoRepository pedidoRepository;
+    private final PedidoRepository pedidoRepository;
+
+    public PedidoService(PedidoRepository pedidoRepository) {
+        this.pedidoRepository = pedidoRepository;
+    }
 
     public void addPedido(Pedido pedido) {
         pedidoRepository.save(pedido);

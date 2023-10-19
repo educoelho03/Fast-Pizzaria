@@ -20,9 +20,11 @@ public class ClienteController {
     // PUT: ATUALIZAR
     // POST: CRIAR
 
-    @Autowired
-    // TODO: Pesquisar sobre ResponseBody e RequestBody
-    private ClienteService clienteService;
+    private final ClienteService clienteService;
+
+    public ClienteController(ClienteService clienteService) {
+        this.clienteService = clienteService;
+    }
 
     @PostMapping("/cadastrar")
     @Transactional

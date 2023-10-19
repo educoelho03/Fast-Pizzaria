@@ -10,9 +10,11 @@ import java.util.List;
 @Service
 public class FuncionarioService {
 
-    @Autowired
-    private FuncionarioRepository funcionarioRepository;
+    private final FuncionarioRepository funcionarioRepository;
 
+    public FuncionarioService(FuncionarioRepository funcionarioRepository) {
+        this.funcionarioRepository = funcionarioRepository;
+    }
 
     public Funcionario addFuncionario(Funcionario funcionario){
         return funcionarioRepository.save(funcionario);

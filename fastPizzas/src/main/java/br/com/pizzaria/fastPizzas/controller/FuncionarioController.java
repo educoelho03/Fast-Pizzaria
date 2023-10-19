@@ -14,8 +14,12 @@ import java.util.List;
 @RequestMapping("/funcionarios")
 public class FuncionarioController {
 
-    @Autowired
-    private FuncionarioService funcionarioService;
+    // TODO: DUVIDA - Pq passar o construtor ao inves do @Autowired
+    private final FuncionarioService funcionarioService;
+
+    public FuncionarioController(FuncionarioService funcionarioService){
+        this.funcionarioService = funcionarioService;
+    }
 
     @PostMapping("/cadastrar")
     @Transactional

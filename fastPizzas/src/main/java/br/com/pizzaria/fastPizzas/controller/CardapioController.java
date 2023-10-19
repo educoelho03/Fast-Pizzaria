@@ -14,8 +14,11 @@ import java.util.List;
 @RequestMapping("/cardapio")
 public class CardapioController {
 
-    @Autowired
-    private CardapioService cardapioService;
+    private final CardapioService cardapioService;
+
+    public CardapioController(CardapioService cardapioService) {
+        this.cardapioService = cardapioService;
+    }
 
     @GetMapping("/itens")
     public ResponseEntity<List<Cardapio>> listagemItens(Cardapio cardapio){

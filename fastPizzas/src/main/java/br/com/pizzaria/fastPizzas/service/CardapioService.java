@@ -9,7 +9,11 @@ import java.util.List;
 @Service
 public class CardapioService {
 
-    private CardapioRepository cardapioRepository;
+    private final CardapioRepository cardapioRepository;
+
+    public CardapioService(CardapioRepository cardapioRepository) {
+        this.cardapioRepository = cardapioRepository;
+    }
 
     public List<Cardapio> getAllCardapio(){
         return cardapioRepository.findAll();
