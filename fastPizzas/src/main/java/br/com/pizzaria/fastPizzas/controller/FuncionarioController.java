@@ -23,7 +23,7 @@ public class FuncionarioController {
 
     @PostMapping("/cadastrar")
     @Transactional
-    public ResponseEntity<Funcionario> cadastrarFuncionario(Funcionario funcionario){
+    public ResponseEntity<Funcionario> cadastrarFuncionario(@RequestBody Funcionario funcionario){
         funcionarioService.addFuncionario(funcionario);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

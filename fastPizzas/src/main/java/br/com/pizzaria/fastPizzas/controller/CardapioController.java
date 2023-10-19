@@ -21,14 +21,14 @@ public class CardapioController {
     }
 
     @GetMapping("/itens")
-    public ResponseEntity<List<Cardapio>> listagemItens(Cardapio cardapio){
+    public ResponseEntity<List<Cardapio>> listagemItens(@RequestBody Cardapio cardapio){
         cardapioService.getAllCardapio();
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
     @PostMapping("/cadastrar")
     @Transactional
-    public ResponseEntity<Cardapio> cadastrarItem(Cardapio item){
+    public ResponseEntity<Cardapio> cadastrarItem(@RequestBody Cardapio item){
         cardapioService.addItemCardapio(item);
         return new ResponseEntity<>(HttpStatus.OK);
     }
