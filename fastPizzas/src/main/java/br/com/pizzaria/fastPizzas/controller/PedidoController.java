@@ -32,6 +32,12 @@ public class PedidoController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<Pedido> listagemPedidosPorId(@PathVariable Long id){
+        pedidoService.getPedidoById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @GetMapping("/consultarStatus/{id}")
     public ResponseEntity<StatusPedido> consultarStatus(@PathVariable Long id){
         pedidoService.consultarStatusPedidoById(id);
