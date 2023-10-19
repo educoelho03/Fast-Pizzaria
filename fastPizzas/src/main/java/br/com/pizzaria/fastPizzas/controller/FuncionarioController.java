@@ -25,7 +25,7 @@ public class FuncionarioController {
     }
 
     @GetMapping("/listar")
-    public ResponseEntity<List<Funcionario>> listagemFuncionarios(Funcionario funcionario){
+    public ResponseEntity<List<Funcionario>> listagemFuncionarios(){
         funcionarioService.getAllFuncionarios();
         return new ResponseEntity<>(HttpStatus.OK);
     }
