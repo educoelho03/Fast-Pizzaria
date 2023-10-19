@@ -38,27 +38,27 @@ public class PedidoController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/consultarStatus/{id}")
+    @GetMapping("/consultarstatus/{id}")
     public ResponseEntity<StatusPedido> consultarStatus(@PathVariable Long id){
         pedidoService.consultarStatusPedidoById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/alterarStatus/{id}")
+    @PutMapping("/alterarstatus/{id}")
     @Transactional
     public ResponseEntity<Pedido> alterarStatus(@PathVariable Long id, @RequestBody Pedido pedido){
         pedidoService.alterarStatusPedidoById(id, pedido);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/alterarInformacoes/{id}")
+    @PutMapping("/alterarsnformacoes/{id}")
     @Transactional
     public ResponseEntity<Pedido> alterarInformacoes(@PathVariable Long id, @RequestBody Pedido pedido){
         pedidoService.alterarInformacoesDoPedidoById(id, pedido);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @DeleteMapping("/deletarPedido/{id}")
+    @DeleteMapping("/deletarpedido/{id}")
     public ResponseEntity<Void> deletarPedidoPorId(@PathVariable Long id){
         pedidoService.deletePedidoById(id);
         return new ResponseEntity<>(HttpStatus.OK);
