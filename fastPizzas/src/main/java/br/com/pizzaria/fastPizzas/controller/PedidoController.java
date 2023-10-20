@@ -51,7 +51,7 @@ public class PedidoController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/alterarsnformacoes/{id}")
+    @PutMapping("/alterarinformacoes/{id}")
     @Transactional
     public ResponseEntity<Pedido> alterarInformacoes(@PathVariable Long id, @RequestBody Pedido pedido){
         pedidoService.alterarInformacoesDoPedidoById(id, pedido);
