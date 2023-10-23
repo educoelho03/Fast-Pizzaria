@@ -31,4 +31,9 @@ public class Cardapio {
     @Column(nullable = false,
             columnDefinition = "DECIMAL(4,2)")
     private Double preco;
+
+    @Column(nullable = false,
+            columnDefinition = "VARCHAR(500)")
+    private String descricao;
+
 }
