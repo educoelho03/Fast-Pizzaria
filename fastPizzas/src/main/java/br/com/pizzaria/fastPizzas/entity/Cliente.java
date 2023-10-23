@@ -7,8 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.UUID;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,13 +26,13 @@ public class Cliente {
     @Column(nullable = false)
     private String endereco;
 
-    @Column(nullable = false)
-    private Integer CEP;
-
-    @Email
+    @Email(message = "Deve ser um email válido!")
     @Column(nullable = false)
     private String email;
 
     @NotNull(message = "O telefone não pode ser nulo")
     private String telefone;
+
+    @Column(nullable = false)
+    private Integer CEP;
 }

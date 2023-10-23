@@ -35,7 +35,7 @@ public class CardapioController {
 
     @GetMapping("/itens/{id}")
     public ResponseEntity<Cardapio> itensPorId(@PathVariable Long id){
-        cardapioService.getCardapioById(id);
+        cardapioService.getItemById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 

@@ -7,6 +7,10 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.swing.text.html.Option;
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class PedidoService {
 
@@ -20,8 +24,8 @@ public class PedidoService {
         pedidoRepository.save(pedido);
     }
 
-    public void getAllPedidos(){
-        pedidoRepository.findAll();
+    public List<Pedido> getAllPedidos(){
+        return pedidoRepository.findAll();
     }
 
     public Pedido getPedidoById(Long id){
@@ -29,9 +33,11 @@ public class PedidoService {
                 .orElseThrow(() -> new EntityNotFoundException("Pedido nao encontrado. " + id));
     }
 
-    public void deletePedidoById(Long id) {
-        pedidoRepository.deleteById(id);
-    }
+//    OUTRA MANEIRA DE FAZER O GET DO ID DO PEDIDO, QUAL É MELHOR?
+//    public Pedido getPedidoById(Long id){
+//        Optional<Pedido> pedidoOptional = pedidoRepository.findById(id);
+//        return pedidoOptional.orElseThrow(() -> new EntityNotFoundException("Pedido nao encontrado"));
+//    }
 
     public StatusPedido consultarStatusPedidoById(Long id) {
 
@@ -57,5 +63,19 @@ public class PedidoService {
         pedidoRepository.saveAndFlush(pedidoExiste);
     }
 
+    public void cancelarPedido(Long id){
+        Pedido pedidoExiste = pedidoRepository.findById(pedidoRepository.getReferenceById(id).getId())
+                .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
 
+        pedidoExiste.setStatusPedido(StatusPedido.CANCELADO);
+    }
+
+    public void deletePedidoById(Long id) {
+        try{
+            Pedido pedidoExiste = getPedidoById(id);
+            pedidoRepository.delete(pedidoExiste);
+        } catch (Exception e){
+            throw new RuntimeException("Pedido nao existe. " + id);
+        }
+    }
 }

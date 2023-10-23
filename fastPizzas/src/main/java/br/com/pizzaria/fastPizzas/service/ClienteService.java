@@ -50,7 +50,7 @@ public class ClienteService {
         try{
             clienteRepository.deleteById(id);
         } catch (Exception e){
-            throw new RuntimeException("Não foi possivel deletar o cliente de ID: " + id);
+            throw new RuntimeException(e);
         }
     }
 
