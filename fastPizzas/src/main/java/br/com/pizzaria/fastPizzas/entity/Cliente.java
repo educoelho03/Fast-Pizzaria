@@ -20,19 +20,20 @@ public class Cliente {
     @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(name = "nome", nullable = false)
     private String nome;
 
-    @Column(nullable = false)
+    @Column(name = "endereco", nullable = false)
     private String endereco;
 
-    @Email(message = "Deve ser um email válido!")
-    @Column(nullable = false)
+    @Email(message = "Digite um email válido!")
+    @Column(name = "email", nullable = false)
     private String email;
 
     @NotNull(message = "O telefone não pode ser nulo")
+    @Column(name = "telefone", nullable = false)
     private String telefone;
 
-    @Column(nullable = false)
+    @Column(name = "cep", nullable = false)
     private Integer CEP;
 }

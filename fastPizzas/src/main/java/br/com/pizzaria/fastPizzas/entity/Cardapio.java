@@ -3,6 +3,8 @@ package br.com.pizzaria.fastPizzas.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -16,23 +18,24 @@ public class Cardapio {
     @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(nullable = false,
+    @Column(name = "produto",
+            nullable = false,
             columnDefinition = "VARCHAR(255)")
-    private String saboresSalgados;
+    private String nomeProduto;
 
-    @Column(nullable = false,
+    @Column(name = "categoriaProduto"
+            ,nullable = false,
             columnDefinition = "VARCHAR(255)")
-    private String saboresDoces;
+    private String categoriaProduto;
 
-    @Column(nullable = false,
-            columnDefinition = "VARCHAR(255)")
-    private String bebidas;
 
-    @Column(nullable = false,
-            columnDefinition = "DECIMAL(4,2)")
-    private Double preco;
+    @Column(name = "preco",
+            nullable = false,
+            columnDefinition = "DECIMAL(8,2)")
+    private BigDecimal preco;
 
-    @Column(nullable = false,
+    @Column(name = "descricao"
+            ,nullable = false,
             columnDefinition = "VARCHAR(500)")
     private String descricao;
 
