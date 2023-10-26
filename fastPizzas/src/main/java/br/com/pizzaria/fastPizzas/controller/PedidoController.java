@@ -63,4 +63,10 @@ public class PedidoController {
         pedidoService.deletePedidoById(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+
+    public ResponseEntity<Void> cancelarPedidoPorId(@PathVariable Long id){
+        pedidoService.cancelarPedidoById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

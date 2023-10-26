@@ -24,11 +24,11 @@ public class PedidoService {
         pedidoRepository.save(pedido);
     }
 
-    public List<Pedido> getAllPedidos(){
+    public List<Pedido> getAllPedidos() {
         return pedidoRepository.findAll();
     }
 
-    public Pedido getPedidoById(Long id){
+    public Pedido getPedidoById(Long id) {
         return pedidoRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Pedido nao encontrado. " + id));
     }
@@ -63,7 +63,7 @@ public class PedidoService {
         pedidoRepository.saveAndFlush(pedidoExiste);
     }
 
-    public void cancelarPedido(Long id){
+    public void cancelarPedidoById(Long id) {
         Pedido pedidoExiste = pedidoRepository.findById(pedidoRepository.getReferenceById(id).getId())
                 .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
 
@@ -71,10 +71,10 @@ public class PedidoService {
     }
 
     public void deletePedidoById(Long id) {
-        try{
+        try {
             Pedido pedidoExiste = getPedidoById(id);
             pedidoRepository.delete(pedidoExiste);
-        } catch (Exception e){
+        } catch (Exception e) {
             throw new RuntimeException("Pedido nao existe. " + id);
         }
     }
