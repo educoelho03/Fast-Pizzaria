@@ -67,7 +67,7 @@ public class PedidoService {
         Pedido pedidoExiste = pedidoRepository.findById(pedidoRepository.getReferenceById(id).getId())
                 .orElseThrow(() -> new EntityNotFoundException("Pedido não encontrado."));
 
-        pedidoExiste.setStatusPedido(StatusPedido.valueOf("CANCELADO"));
+        pedidoExiste.setStatusPedido(StatusPedido.CANCELADO);
     }
 
     public void deletePedidoById(Long id) {
