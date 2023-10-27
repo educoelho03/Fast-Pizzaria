@@ -8,11 +8,9 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-// Adicionar relacionamentos(ManyToMany, ManyToOne, OneToMany)
+// REMOVER AS ANOTAÇÕES PARA A IMPLEMENTAÇÃO DO CLEAN ARCHITETURE
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity(name = "Pedidos")
 @Table(name = "tb_pedido")
 public class Pedido {
@@ -43,4 +41,12 @@ public class Pedido {
             nullable = false,
             columnDefinition = "VARCHA(25)")
     private Pagamento formaPagamento;
+
+
+    public Pedido(LocalDateTime dataDoPedido, @NotNull StatusPedido statusPedido, String informacoesPedido, @NotNull Pagamento formaPagamento) {
+        this.dataDoPedido = dataDoPedido;
+        this.statusPedido = statusPedido;
+        this.informacoesPedido = informacoesPedido;
+        this.formaPagamento = formaPagamento;
+    }
 }

@@ -19,10 +19,10 @@ public class PedidoController {
         this.pedidoService = pedidoService;
     }
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/criar")
     @Transactional
     public ResponseEntity<Pedido> cadastrarPedido(@RequestBody Pedido pedido){
-        pedidoService.addPedido(pedido);
+        pedidoService.createPedido(pedido);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 

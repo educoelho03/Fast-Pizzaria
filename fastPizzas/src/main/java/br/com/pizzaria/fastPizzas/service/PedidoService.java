@@ -20,7 +20,7 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public void addPedido(Pedido pedido) {
+    public void createPedido(Pedido pedido) {
         pedidoRepository.save(pedido);
     }
 
