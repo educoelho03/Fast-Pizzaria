@@ -1,10 +1,10 @@
 package br.com.pizzaria.fastPizzas.enums;
 
 public enum StatusPedido {
-    ZERO(0, "FINALIZADO"),
-    UM(1, "AGUARDANDO_PAGAMENTO"),
-    DOIS(2, "EM_ANDAMENTO"),
-    TRES(3, "CANCELADO");
+    FINALIZADO(0, "FINALIZADO"),
+    AGUARDANDO_PAGAMENTO(1, "AGUARDANDO_PAGAMENTO"),
+    EM_ANDAMENTO(2, "EM_ANDAMENTO"),
+    CANCELADO(3, "CANCELADO");
 
     private final int codigo;
     private final String descricao;

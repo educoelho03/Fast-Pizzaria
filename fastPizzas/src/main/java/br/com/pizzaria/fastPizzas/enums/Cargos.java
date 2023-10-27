@@ -1,11 +1,11 @@
 package br.com.pizzaria.fastPizzas.enums;
 
 public enum Cargos {
-    ZERO(0 , "GERENTE"),
-    UM(1, "GARCOM"),
-    DOIS(2, "FAXINEIRO"),
-    TRES(3, "PIZZAIOLO"),
-    QUATRO(4, "CAIXA");
+    GERENTE(0 , "GERENTE"),
+    GARCOM(1, "GARCOM"),
+    FAXINEIRO(2, "FAXINEIRO"),
+    PIZZAIOLO(3, "PIZZAIOLO"),
+    CAIXA(4, "CAIXA");
 
     private final int codigo;
     private final String descricao;

@@ -2,10 +2,10 @@ package br.com.pizzaria.fastPizzas.enums;
 
 // Melhorar ENUM - Colocar chave valor?
 public enum Pagamento {
-    ZERO(0, "Cartão de Crédito"),
-    UM(1, "Cartão de Débito"),
-    DOIS(2, "Dinheiro"),
-    TRES(3, "PIX");
+    CARTAO_CREDITO(0, "Cartão de Crédito"),
+    CARTAO_DEBITO(1, "Cartão de Débito"),
+    DINHEIRO(2, "Dinheiro"),
+    PIX(3, "PIX");
 
     private final int codigo;
     private final String descricao;
