@@ -35,5 +35,5 @@ public class Cliente {
     private String telefone;
 
     @Column(name = "cep", nullable = false)
-    private Integer CEP;
+    private Integer cep;
 }

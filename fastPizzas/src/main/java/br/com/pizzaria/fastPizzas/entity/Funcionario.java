@@ -18,7 +18,7 @@ public class Funcionario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
-    private Long Id;
+    private Long id;
 
     @Column(name = "nome",
             nullable = false,
@@ -28,7 +28,7 @@ public class Funcionario {
     @Column(name = "cpf",
             nullable = false,
             columnDefinition = "VARCHAR(11)")
-    private String CPF;
+    private String cpf;
 
     @Column(name = "cargo", nullable = false)
     @Enumerated(EnumType.STRING)
